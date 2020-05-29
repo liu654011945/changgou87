@@ -35,7 +35,17 @@ public class MyGlobalFilter implements GlobalFilter, Ordered {
         //3.获取当前的请求路径 判断是否属于要去登录路径，如果是 放行
         String path = request.getURI().getPath();//   /user/login
 
-        if(path.startsWith("/api/user/login")){//去登录
+        if(path.startsWith("/api/user/login") || path.endsWith("/v2/api-docs")){//去登录
+
+            /*if (path.endsWith("/v2/api-docs")) {
+                String newPath = "/v2/api-docs";
+                ServerHttpRequest newRequest = request.mutate().path(newPath).build();
+                return chain.filter(exchange.mutate().request(newRequest).build());
+            }
+            String path1 = request.getURI().getRawPath();*/
+
+
+
             return chain.filter(exchange);
         }
 

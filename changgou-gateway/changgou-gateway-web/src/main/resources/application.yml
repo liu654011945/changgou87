@@ -17,7 +17,7 @@ spring:
 #        uri: http://localhost:18081
         uri: lb://goods
         predicates:
-        - Path=/goods/**
+        - Path=/api/brand/**,/api/v2/api-docs
 #        - Host=cloud.itheima.com**
 #        - Path=/brand/**  # 路径规则 如果请求的路径以/brand/开头 就符合条件进行转发
         filters:
